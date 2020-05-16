@@ -1,5 +1,14 @@
 1. Konfiguracja nazwy i hasla do korzystania z git pull i git push:
 	git config credential.helper store
 
-2. Usuniecie nazwy i hasla z credentials store:
+2. git pull
+
+3. nazwa i haslo
+
+4. Od teraz nazwa i haslo są przedszymywane w credential.helper
+
+5. Usuniecie nazwy i hasla z credentials store:
 	git config --unset credential.helper
+
+6. Reset nazwy i hasla:
+	git config credential.helper wincred
