@@ -1,2 +1,5 @@
 1. Konfiguracja nazwy i hasla do korzystania z git pull i git push:
-	https://www.shellhacks.com/git-config-username-password-store-credentials/
+	git config credential.helper store
+
+2. Usuniecie nazwy i hasla z credentials store:
+	git config --unset credential.helper
