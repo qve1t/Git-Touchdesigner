@@ -1,0 +1,8 @@
+name	command
+status	git status
+addAll	git add .
+commit	git commit -m MESSAGE
+push	git push
+pull	git pull
+fetch	git fetch
+checkout	git checkout MESSAGE
