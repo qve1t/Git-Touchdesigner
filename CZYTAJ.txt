@@ -5,6 +5,7 @@
 	- Praca w głównej ścieżce projektu powinna być zapisywana tylko w master branch
 	- dzięki temu podczas pracy można bez błędów i problemów updatować i zmieniać branche projektu
 	(zmienią się tylko plikize skryptami i external toxes czyli wszystko co jest ładowane do projektu z zewnątrz)
+	- CTRL+ALT+g - open git panel
 
 1. Konfiguracja nazwy i hasla do korzystania z git pull i git push:
 	- git config credential.helper store
