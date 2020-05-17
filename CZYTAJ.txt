@@ -1,3 +1,11 @@
+0.	Instalacja i konfiguracja gita i projektu
+	- wszystkie nody z głównej ścieżki projektu powinny być zapisywane jako external toxes
+	- Wszystkie skrypty i tabele (extensiony, chop exeki itp) powinny być ładowane z zewnętrznych plików
+	- Praca nad konkretnymi basamy/componentami to oddzielny branch projektu, wyniki są zapisywane jako external tox
+	- Praca w głównej ścieżce projektu powinna być zapisywana tylko w master branch
+	- dzięki temu podczas pracy można bez błędów i problemów updatować i zmieniać branche projektu
+	(zmienią się tylko plikize skryptami i external toxes czyli wszystko co jest ładowane do projektu z zewnątrz)
+
 1. Konfiguracja nazwy i hasla do korzystania z git pull i git push:
 	- git config credential.helper store
 	- git pull
@@ -11,3 +19,5 @@
 		git config credential.helper wincred
 
 2. Reinit network after checkout
+
+Długo mi zajęło żeby dojrzeć do takiego workflow ;)
