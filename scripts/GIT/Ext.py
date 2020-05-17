@@ -11,15 +11,8 @@ class Ext:
 		self.cmdOutput = op('cmd_output')
 		self.gitCommands = op('git_commands')
 
-	def RunCommand(self, command):
-		#command should be a list of strings
-		commandList = str(command).split(" ")
-		if self.gitCommandReplace in commandList:
-			commandList[commandList.index("MESSAGE")] = str(op('message')[0,0])
-
-		process = subprocess.Popen(commandList, stdout=subprocess.PIPE)
-		
-		return process.communicate()[0]
+	def OutputClean(self):
+		self.cmdOutput.text = ""
 
 	def PrintOutput(self, message):
 		self.cmdOutput.text = self.MessageDecode(message)
@@ -29,6 +22,16 @@ class Ext:
 			return message.decode()
 		except:
 			return message 
+			
+	def RunCommand(self, command):
+		#command should be a list of strings
+		commandList = str(command).split(" ")
+		if self.gitCommandReplace in commandList:
+			commandList[commandList.index("MESSAGE")] = str(op('message')[0,0])
+
+		process = subprocess.Popen(commandList, stdout=subprocess.PIPE)
+		
+		return process.communicate()[0]
 
 	def RunGitCommand(self, command):
 		commandToRun = self.gitCommands[command, 'command']
