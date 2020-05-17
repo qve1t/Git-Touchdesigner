@@ -1,0 +1,13 @@
+name	command
+status	git status
+branches	git branch -a
+addAll	git add .
+commit	git commit -m MESSAGE
+push	git push
+pull	git pull
+fetch	git fetch
+checkout	git checkout MESSAGE
+
+store	git config credential.helper store
+clear	git config credential.helper wincred
+remove	git config --unset credential.helper
