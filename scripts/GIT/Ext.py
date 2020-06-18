@@ -30,7 +30,7 @@ class Ext:
 			commandList[commandList.index("MESSAGE")] = str(op('message')[0,0])
 
 		process = subprocess.Popen(commandList, stdout=subprocess.PIPE)
-		
+		print('test')
 		return process.communicate()[0]
 
 	def RunGitCommand(self, command):
