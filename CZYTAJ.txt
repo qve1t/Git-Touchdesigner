@@ -22,3 +22,7 @@
 2. Reinit network after checkout
 
 Długo mi zajęło żeby dojrzeć do takiego workflow ;)
+
+///////TO DO//////////////
+-zamienic git branch na git ls-remote --heads origin
+-tworzenie containerow z extensionami i external components
