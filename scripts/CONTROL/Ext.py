@@ -8,4 +8,7 @@ class Ext:
 		self.toxPath = str(op('tox_folder_path')['tox','path'])
 
 	def SaveAsTox(self, name, path):
-		op(path).save(self.toxPath + '/' + name + '.tox')
+		op(path).save("%s/%s.tox" % (self.toxPath, name))
+
+	def AddExternalTox(self, path, currentToxName):
+		op(path).par.externaltox = currentToxName
