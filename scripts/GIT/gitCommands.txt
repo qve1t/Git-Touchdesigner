@@ -1,6 +1,6 @@
 name	command
 status	git status
-branches	git branch -a
+branches	git ls-remote --heads origin
 addAll	git add .
 commit	git commit -m MESSAGE
 push	git push
