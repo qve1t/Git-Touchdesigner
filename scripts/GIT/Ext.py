@@ -9,7 +9,7 @@ class Ext:
 		self.ownerComp = ownerComp
 		self.gitCommandReplace = "MESSAGE"
 		self.cmdOutput = op('cmd_output')
-		self.gitCommands = op('git_commands')
+		self.GitCommands = op('git_commands')
 
 	def OutputClean(self):
 		self.cmdOutput.text = ""
@@ -32,12 +32,17 @@ class Ext:
 			else:
 				commandList[commandList.index("MESSAGE")] = customMessage
 
-		process = subprocess.Popen(commandList, stdout=subprocess.PIPE)
+		process = subprocess.Popen(commandList, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
 
-		return process.communicate()[0]
+		#return success
+		if process.communicate()[0]:
+			return process.communicate()[0]
+
+		#return error	
+		return process.communicate()[1]
 
 	def RunGitCommand(self, command):
-		commandToRun = self.gitCommands[command, 'command']
+		commandToRun = self.GitCommands[command, 'command']
 		if commandToRun == None:
 			self.PrintOutput("Wrong command")
 			return
@@ -45,7 +50,7 @@ class Ext:
 		self.PrintOutput(self.RunCommand(commandToRun))
 
 	def ActiveRemoteBranches(self):
-		commandToRun = self.gitCommands['branches', 'command']
+		commandToRun = self.GitCommands['branches', 'command']
 		text = self.RunCommand(commandToRun).decode()
 		if text == '':
 			return []
