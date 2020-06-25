@@ -10,6 +10,17 @@ class Ext:
 		self.gitCommandReplace = "MESSAGE"
 		self.cmdOutput = op('cmd_output')
 		self.GitCommands = op('git_commands')
+		self.username = op('GUI/account_panel/data_container/username_null')[0,0]
+		self.password = op('GUI/account_panel/data_container/password_null')[0,0]
+		self.commandsToCheck = ['fetch', 'pull', 'push']
+
+	def getRepoUrl(self):
+		commandToRun = self.GitCommands['getUrl', 'command']
+		repoFullUrl = self.RunCommand(command=commandToRun).decode().replace("https://", "").replace("\n", "")
+		return repoFullUrl
+
+	def GitUsernameAndPassword(self):
+		return "https://%s:%s@%s" % (str(self.username), str(self.password), self.getRepoUrl())
 
 	def OutputClean(self):
 		self.cmdOutput.text = ""
@@ -23,7 +34,7 @@ class Ext:
 		except:
 			return message 
 			
-	def RunCommand(self, command, customMessage=None):
+	def RunCommand(self, command, customMessage=None, usePass=False):
 		#command should be a list of strings
 		commandList = str(command).split(" ")
 		if self.gitCommandReplace in commandList:
@@ -31,6 +42,10 @@ class Ext:
 				commandList[commandList.index("MESSAGE")] = str(op('message')[0,0])
 			else:
 				commandList[commandList.index("MESSAGE")] = customMessage
+
+		#add username and password to repo
+		if usePass:
+			commandList.append(self.GitUsernameAndPassword())
 
 		process = subprocess.Popen(commandList, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
 
@@ -47,7 +62,11 @@ class Ext:
 			self.PrintOutput("Wrong command")
 			return
 
-		self.PrintOutput(self.RunCommand(commandToRun))
+		usePassword = False
+		if command in self.commandsToCheck:
+			usePassword = True
+
+		self.PrintOutput(self.RunCommand(command=commandToRun, usePass=usePassword))
 
 	def ActiveRemoteBranches(self):
 		commandToRun = self.GitCommands['branches', 'command']
