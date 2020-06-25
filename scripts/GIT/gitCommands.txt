@@ -1,7 +1,7 @@
 name	command
 status	git status
 branches	git ls-remote --heads origin
-addAll	git add .
+addAll	git add -A
 commit	git commit -m MESSAGE
 push	git push
 pull	git pull
