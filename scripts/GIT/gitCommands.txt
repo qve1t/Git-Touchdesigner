@@ -7,7 +7,4 @@ push	git push
 pull	git pull
 fetch	git fetch
 checkout	git checkout MESSAGE
-
-store	git config credential.helper store
-clear	git config credential.helper wincred
-remove	git config --unset credential.helper
+getUrl	git config --get remote.origin.url
