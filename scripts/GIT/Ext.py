@@ -20,6 +20,9 @@ class Ext:
 		return repoFullUrl
 
 	def GitUsernameAndPassword(self):
+		if "bitbucket" in self.getRepoUrl():
+			return "https://%s" % (self.getRepoUrl())
+
 		return "https://%s:%s@%s" % (str(self.username), str(self.password), self.getRepoUrl())
 
 	def OutputClean(self):
