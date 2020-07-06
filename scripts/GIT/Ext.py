@@ -12,7 +12,7 @@ class Ext:
 		self.GitCommands = op('git_commands')
 		self.username = op('GUI/account_panel/data_container/username_null')[0,0]
 		self.password = op('GUI/account_panel/data_container/password_null')[0,0]
-		self.commandsToCheck = ['fetch', 'pull', 'push']
+		self.commandsToCheck = ['pull', 'push']
 
 	def getRepoUrl(self):
 		commandToRun = self.GitCommands['getUrl', 'command']
